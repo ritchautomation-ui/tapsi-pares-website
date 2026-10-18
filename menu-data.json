@@ -1,0 +1,267 @@
+[
+  {
+    "id": "sig",
+    "name": "Tapsi Pares Signature",
+    "category": "Signature",
+    "prices": 245,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-02.webp"
+  },
+  {
+    "id": "lechon",
+    "name": "Lechon Bagnet Silog",
+    "category": "Silog",
+    "prices": 200,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-13.webp"
+  },
+  {
+    "id": "katsu",
+    "name": "Katsu Silog",
+    "category": "Silog",
+    "prices": 200,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-14.webp"
+  },
+  {
+    "id": "tocilong",
+    "name": "Tocilong Silog",
+    "category": "Silog",
+    "prices": 190,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-15.webp"
+  },
+  {
+    "id": "bulgogi",
+    "name": "Bulgogi Silog",
+    "category": "Silog",
+    "prices": 235,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-16.webp"
+  },
+  {
+    "id": "liempo",
+    "name": "Liempo Silog",
+    "category": "Silog",
+    "prices": 225,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-17.webp"
+  },
+  {
+    "id": "daing",
+    "name": "Daing Silog",
+    "category": "Silog",
+    "prices": 200,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-18.webp"
+  },
+  {
+    "id": "german",
+    "name": "German Silog",
+    "category": "Silog",
+    "prices": 190,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-19.webp"
+  },
+  {
+    "id": "adobo",
+    "name": "Adobo Silog",
+    "category": "Silog",
+    "prices": 190,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-20.webp"
+  },
+  {
+    "id": "samgy",
+    "name": "Samgy Silog",
+    "category": "Silog",
+    "prices": 190,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-21.webp"
+  },
+  {
+    "id": "porkchop",
+    "name": "Pork Chop Silog",
+    "category": "Silog",
+    "prices": 235,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-22.webp"
+  },
+  {
+    "id": "pares",
+    "name": "Pares Silog",
+    "category": "Silog",
+    "prices": 255,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-25.webp"
+  },
+  {
+    "id": "tap",
+    "name": "TapSilog",
+    "category": "Silog",
+    "prices": 245,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-26.webp"
+  },
+  {
+    "id": "bistig",
+    "name": "Bistig Silog",
+    "category": "Silog",
+    "prices": 245,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-27.webp"
+  },
+  {
+    "id": "braised",
+    "name": "Braised Beef Silog",
+    "category": "Silog",
+    "prices": 255,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-28.webp"
+  },
+  {
+    "id": "roast",
+    "name": "Roast Beef Silog",
+    "category": "Silog",
+    "prices": 245,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-29.webp"
+  },
+  {
+    "id": "sisig",
+    "name": "Sizzling Sisig",
+    "category": "Sizzling",
+    "prices": 225,
+    "inclusions": "",
+    "image": "assets/image-09.webp"
+  },
+  {
+    "id": "kare",
+    "name": "Sizzling Kare-kare",
+    "category": "Sizzling",
+    "prices": 235,
+    "inclusions": "",
+    "image": "assets/image-07.webp"
+  },
+  {
+    "id": "tokwa",
+    "name": "Sizzling Tokwa't Baboy",
+    "category": "Sizzling",
+    "prices": 200,
+    "inclusions": "",
+    "image": "assets/image-10.webp"
+  },
+  {
+    "id": "bean",
+    "name": "Sizzling Bean Sprouts",
+    "category": "Sizzling",
+    "prices": 190,
+    "inclusions": "",
+    "image": "assets/image-08.webp"
+  },
+  {
+    "id": "cab",
+    "name": "Sizzling Beef Cabbage",
+    "category": "Sizzling",
+    "prices": 180,
+    "inclusions": "",
+    "image": "assets/image-06.webp"
+  },
+  {
+    "id": "skew",
+    "name": "Sizzling Skewers",
+    "category": "Sizzling",
+    "prices": 170,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-30.webp"
+  },
+  {
+    "id": "sliem",
+    "name": "Sizzling Liempo",
+    "category": "Sizzling",
+    "prices": 235,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-31.webp"
+  },
+  {
+    "id": "saus",
+    "name": "Sizzling Sausage",
+    "category": "Sizzling",
+    "prices": 180,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-32.webp"
+  },
+  {
+    "id": "spork",
+    "name": "Sizzling PorkChop",
+    "category": "Sizzling",
+    "prices": 235,
+    "inclusions": "Unlimited Rice & Soup",
+    "image": "assets/image-33.webp"
+  },
+  {
+    "id": "bulalo",
+    "name": "Upgraded Bulalo",
+    "category": "Bulalo & Soup",
+    "prices": [
+      [
+        "Busog · 2pcs Unli Rice, 2pcs Bone Marrow",
+        360
+      ],
+      [
+        "Lusog · 4pcs Unli Rice, 3pcs Bone Marrow",
+        695
+      ]
+    ],
+    "inclusions": "",
+    "image": "assets/image-23.webp"
+  },
+  {
+    "id": "sal",
+    "name": "Sinigang na Salmon",
+    "category": "Bulalo & Soup",
+    "prices": 180,
+    "inclusions": "",
+    "image": "assets/image-24.webp"
+  },
+  {
+    "id": "b1",
+    "name": "Sarap ka Pares B1 · Good for 2",
+    "category": "Bundles",
+    "prices": 710,
+    "inclusions": "Sizzling Kare-kare + Sinigang na Salmon + Sizzling Beef Cabbage · Unlimited Rice & Soup",
+    "image": "assets/image-11.webp"
+  },
+  {
+    "id": "b2",
+    "name": "Sarap ka Pares B2 · Good for 3",
+    "category": "Bundles",
+    "prices": 860,
+    "inclusions": "Upgraded Bulalo + TapsiPares Signature + Sizzling Sisig · Unlimited Rice & Soup",
+    "image": "assets/image-12.webp"
+  },
+  {
+    "id": "sv1",
+    "name": "Tokwa't Baboy Bowl",
+    "category": "All Day Savers",
+    "prices": 105,
+    "inclusions": "",
+    "image": "assets/image-03.webp"
+  },
+  {
+    "id": "sv2",
+    "name": "Bulalo Bowl",
+    "category": "All Day Savers",
+    "prices": 105,
+    "inclusions": "",
+    "image": "assets/image-04.webp"
+  },
+  {
+    "id": "sv3",
+    "name": "Sisig Bowl",
+    "category": "All Day Savers",
+    "prices": 105,
+    "inclusions": "",
+    "image": "assets/image-05.webp"
+  }
+]
