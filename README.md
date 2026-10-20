@@ -1,6 +1,8 @@
 # TapSi Pares 24/7 – premium website mockup
 
-Single-page, no-build static site (HTML, CSS, a little JavaScript). Menu search, category filters, skippable intro (plays once per session, off for reduced-motion), and the full 32-dish menu.
+Single-page, no-build static site (HTML, CSS, a little JavaScript). Signature-focused landing page, cinematic background video, menu search, category filters, and the full 32-dish menu. Names and prices remain unchanged.
+
+The 22-second silent hero loop in `assets/hero-film.mp4` comes from the supplied video. It plays inline with pause/play controls and uses `assets/hero-poster.jpg` as a fallback. Reduced-motion preferences pause and hide the video. The refreshed sizzling tokwa't baboy photo is a still from the same supplied video.
 
 ## Run locally
 Open `index.html`, or run `npx serve .`

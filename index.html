@@ -10,12 +10,7 @@
 <meta name="theme-color" content="#161311">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;700&display=swap">
-<script>
-(function(){var d=document.documentElement,s=false;
-try{s=sessionStorage.getItem('tapsi-intro')==='1'}catch(e){}
-var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!s&&!r)d.classList.add('intro-on');})();
-</script>
+
 <style>
 :root{--bg:#161311;--surface:#1f1b18;--raised:#29241f;--line:#3a332c;--cream:#f4ead7;--mute:#b9ab96;--amber:#d9a44a;--amber-d:#b98530;--red:#c9291d;--head:'Fraunces',Georgia,'Times New Roman',serif;--body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;--bar:64px;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161311}}
@@ -194,16 +189,53 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
  html{scroll-behavior:auto}
  *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* Cinematic signature hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:calc(100svh - var(--bar));padding:5rem 0 6.5rem;background:#130e09}
+.hero-media,.hero-media::after{position:absolute;inset:0;z-index:-1}
+.hero-media{background:url('assets/hero-poster.jpg') center 58%/cover no-repeat}
+.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 58%;opacity:.76}
+.hero-media::after{z-index:1;content:"";background:linear-gradient(90deg,rgba(13,10,7,.94) 0%,rgba(13,10,7,.69) 42%,rgba(13,10,7,.25) 100%),linear-gradient(0deg,#161311 0%,transparent 35%,rgba(13,10,7,.15) 100%)}
+.hero .wrap{grid-template-columns:1.25fr .75fr;gap:4rem}
+.eyebrow{font:700 .72rem/1.5 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem}
+.hero h1{font-size:clamp(3.5rem,6.6vw,6.1rem);letter-spacing:-.055em;line-height:1.02;text-shadow:0 3px 30px #0004}
+.hero h1 span{display:block}
+.hero h1 em{color:#edbc6b}
+.hero p.lead{color:#e0d6c6;font-size:1.08rem;max-width:39ch}
+.hero .acts .btn{gap:1.3rem;min-height:52px;border-radius:3px}
+.hero .note{color:#e8d8bd;font-size:.85rem;flex-wrap:wrap;gap:.55rem}
+.hero .note::before{background:var(--amber)}
+.hero .note span{color:#c2b5a2}
+.hero figure{margin:2rem 0 0;align-self:center;transform:rotate(2deg);border:1px solid #e8c48c50;background:#211a14;padding:.7rem;box-shadow:0 24px 70px #0006}
+.hero figure::before{display:none}
+.hero figure a{display:block;text-decoration:none}
+.hero figure img{aspect-ratio:1/1;object-fit:cover;object-position:center;width:100%}
+.signature-seal{display:block;padding:.4rem .3rem 1rem;font:700 .65rem var(--body);letter-spacing:.23em;color:var(--amber)}
+.hero figcaption{position:static;display:flex;gap:1rem;justify-content:space-between;align-items:center;background:none;padding:1.2rem .3rem .5rem;font-size:1.15rem}
+.hero figcaption small{margin-top:.5rem;font-size:.75rem}
+.hero figcaption strong{color:#edbc6b;font:600 1.6rem var(--head)}
+.hero .hero-bottom{position:absolute;bottom:1.6rem;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:#cfbea6;font-size:.75rem}
+.hero-bottom a{text-decoration:none;letter-spacing:.04em}.hero-bottom a span{margin-left:1rem}
+#film-toggle{padding:.65rem .9rem;border:1px solid #b9ab9655;background:#16131180;border-radius:30px;color:var(--cream);font:inherit;cursor:pointer}
+/* Consistent photo-led menu cards */
+.dish{position:relative;overflow:hidden;border:1px solid #3a332c;border-radius:12px;transition:transform .25s,border-color .25s}
+.dish:hover{transform:translateY(-4px);border-color:#b98530}
+.dish img{aspect-ratio:5/4;object-fit:cover;object-position:center}
+.dish[data-category="Signature"]{border-color:var(--amber)}
+.dish[data-category="Signature"]::before{content:"HOUSE SIGNATURE";position:absolute;top:.8rem;left:.8rem;z-index:1;background:var(--amber);color:#1a1209;padding:.4rem .65rem;border-radius:3px;font:700 .65rem var(--body);letter-spacing:.08em}
+.dish-body{padding:1.3rem 1.4rem 1.5rem}.dish-cat{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.35rem}
+.dish h3{font-size:1.45rem;line-height:1.2}.prices{padding-top:1.25rem}.prices strong{font-size:1.65rem}
+.sig a{border-radius:8px}.sig a:first-child img{object-position:center}
+@media(max-width:980px){.hero{padding-top:3.5rem}.hero .wrap{grid-template-columns:1.15fr .85fr;gap:2rem}.hero h1{font-size:clamp(3.2rem,7vw,5rem)}.hero figure{margin:0;max-width:100%}.hero figcaption{flex-wrap:wrap}}
+@media(max-width:620px){.hero{padding:3.5rem 0 6rem}.hero .wrap{grid-template-columns:1fr;gap:2.5rem}.hero h1{font-size:clamp(3rem,12vw,4.5rem)}.hero .eyebrow{font-size:.62rem;letter-spacing:.14em}.hero p.lead{font-size:1rem;max-width:34ch}.hero figure{width:78%;max-width:330px;justify-self:end;transform:rotate(2deg)}.hero figure img{aspect-ratio:4/3}.hero figcaption{flex-wrap:nowrap;font-size:.95rem}.hero .hero-bottom{font-size:.65rem;bottom:1.2rem}.hero-media video{object-position:55% center}.hero-media::after{background:linear-gradient(180deg,#130e09b8,#130e0990 55%,#161311 100%)}.hero .note{margin-top:1.3rem}.dish{flex-direction:column}.dish img{width:100%;aspect-ratio:5/4;min-height:0}.dish-body{padding:1.25rem}.dish h3{font-size:1.4rem}.grid{gap:1.5rem}.hero .acts{gap:.65rem}.hero .acts .btn{font-size:.85rem;padding:.7rem 1rem}}
+@media(prefers-reduced-motion:reduce){.hero-media video{visibility:hidden}.hero figure{transform:none}.dish:hover{transform:none}}
+
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="intro" id="intro" role="dialog" aria-label="Welcome to TapSi Pares">
- <img class="bg" src="assets/photo-545584246-1500.jpg" alt="TapSi Pares storefront in Angeles at dusk, with the red facade, 24-hour sign and mascot">
- <button class="skip-intro" id="skip-intro" type="button">Skip intro</button>
- <div class="intro-copy"><img src="assets/image-01.webp" alt="TapSi Pares logo"><p>The Upgraded Tapsilog &amp; Pares.</p></div>
-</div>
+
 
 <header class="bar">
  <div class="wrap">
@@ -218,28 +250,30 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
 
 <main id="main">
  <section class="hero" id="home" aria-labelledby="h1">
+  <div class="hero-media" aria-hidden="true"><video id="hero-film" muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg"><source src="assets/hero-film.mp4" type="video/mp4"></video></div>
   <div class="wrap">
    <div>
-    <h1 id="h1">Busog at lusog,<em>any time.</em></h1>
-    <p class="lead">Your Filipino comfort-food fix. Silog plates, sizzling meals, and bowls worth slowing down for.</p>
+    <p class="eyebrow">Angeles, Pampanga · TapSi Pares 24/7</p>
+    <h1 id="h1">The signature.<em>The craving.</em><span>TapSi Pares.</span></h1>
+    <p class="lead">Our Tapsi Pares Signature: tapa, pares, eggs, and unlimited rice &amp; soup. The comfort plate you come back for.</p>
     <div class="acts">
-     <a class="btn" href="#menu" data-reset>Explore the menu</a>
+     <a class="btn" href="#menu" data-pick="Signature">Meet our signature <span aria-hidden="true">↗</span></a>
      <a class="btn ghost" href="https://www.google.com/maps/place/TapsiPares+24%2F7/@15.13072,120.572948,17z/data=!4m15!1m8!3m7!1s0x3396f30033261c31:0x1e983ad8d3942a0b!2sTapsiPares+24%2F7!8m2!3d15.13072!4d120.572948!10e9!16s%2Fg%2F11xvxw0vyz!3m5!1s0x3396f30033261c31:0x1e983ad8d3942a0b!8m2!3d15.13072!4d120.572948!16s%2Fg%2F11xvxw0vyz" target="_blank" rel="noopener noreferrer">Get directions</a>
     </div>
-    <p class="note">Angeles, Pampanga. Listed as open 24 hours.</p>
+    <p class="note">Busog. Lusog. Anytime. <span>Made for your cravings.</span></p>
    </div>
    <figure>
-    <img src="assets/photo-852472833-1350.jpg" alt="Sizzling kare-kare with crispy pork, eggplant and string beans in a thick peanut sauce" width="760" height="1350" fetchpriority="high">
-    <figcaption>Sizzling Kare-kare<small>From our menu</small></figcaption>
+    <a href="#menu" data-pick="Signature" aria-label="See Tapsi Pares Signature on the menu"><span class="signature-seal">THE HOUSE SIGNATURE</span><img src="assets/image-02.webp" alt="Tapsi Pares Signature with tapa, pares, eggs and rice" width="640" height="439" fetchpriority="high"></a><figcaption><span>Tapsi Pares Signature<small>Unlimited Rice &amp; Soup</small></span><strong>₱245</strong></figcaption>
    </figure>
   </div>
+  <div class="hero-bottom wrap"><a href="#signature">Discover your next craving <span aria-hidden="true">↓</span></a><button id="film-toggle" type="button" aria-pressed="false" aria-controls="hero-film">Play background video</button></div>
  </section>
 
  <section class="sec alt" id="signature" aria-labelledby="sig-h">
   <div class="wrap">
-   <div class="head"><h2 id="sig-h">Find your next comfort food.</h2><p>Three plates to start with. Tap one to see it on the menu.</p></div>
+   <div class="head"><h2 id="sig-h">Start with the signature.</h2><p>The house favorite, then your next craving. Big flavors. Comfort in every plate.</p></div>
    <div class="sig">
-    <a href="#menu" data-pick="Bulalo &amp; Soup"><img src="assets/photo-846612110-900.jpg" alt="Bulalo with bone marrow and corn in a clear broth" loading="lazy"><div><h3>Upgraded Bulalo</h3><span>From ₱360</span></div></a>
+    <a href="#menu" data-pick="Signature"><img src="assets/image-02.webp" alt="Tapsi Pares Signature with tapa, pares, eggs and rice" loading="lazy"><div><p class="eyebrow">The house favorite</p><h3>Tapsi Pares Signature</h3><span>₱245 · Unlimited Rice &amp; Soup</span></div></a>
     <a href="#menu" data-pick="Sizzling"><img src="assets/photo-829035184-900.jpg" alt="Grilled liempo on a sizzling plate with rice and corn" loading="lazy"><div><h3>Sizzling Liempo</h3><span>₱235</span></div></a>
     <a href="#menu" data-pick="Sizzling"><img src="assets/photo-825327746-900.jpg" alt="Sizzling kare-kare on a wooden board" loading="lazy"><div><h3>Sizzling Kare-kare</h3><span>₱235</span></div></a>
    </div>
@@ -248,7 +282,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
 
  <section class="sec" id="menu" aria-labelledby="menu-h">
   <div class="wrap">
-   <div class="head"><h2 id="menu-h">Ano’ng gusto mo?</h2><p>Find a favorite or try something different. Prices are in Philippine pesos.</p></div>
+   <div class="head"><h2 id="menu-h">Ano’ng gusto mo?</h2><p>Your favorites, all in one place. Start with our signature or find your usual. Prices in Philippine pesos.</p></div>
   </div>
   <div class="tools" id="tools" hidden>
    <div class="wrap">
@@ -277,7 +311,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
 <article class="dish" data-name="roast beef silog" data-category="Silog"><img src="assets/photo-835529374-720.jpg" alt="Roast Beef Silog" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Silog</p><h3>Roast Beef Silog</h3><p class="inc">Unlimited Rice &amp; Soup</p><ul class="prices"><li><span></span><strong>₱245</strong></li></ul></div></article>
 <article class="dish" data-name="sizzling sisig" data-category="Sizzling"><img src="assets/image-09.webp" alt="Sizzling Sisig" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Sisig</h3><ul class="prices"><li><span></span><strong>₱225</strong></li></ul></div></article>
 <article class="dish" data-name="sizzling kare-kare" data-category="Sizzling"><img src="assets/photo-825327746-720.jpg" alt="Sizzling Kare-kare" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Kare-kare</h3><ul class="prices"><li><span></span><strong>₱235</strong></li></ul></div></article>
-<article class="dish" data-name="sizzling tokwa&#x27;t baboy" data-category="Sizzling"><img src="assets/image-10.webp" alt="Sizzling Tokwa&#x27;t Baboy" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Tokwa&#x27;t Baboy</h3><ul class="prices"><li><span></span><strong>₱200</strong></li></ul></div></article>
+<article class="dish" data-name="sizzling tokwa&#x27;t baboy" data-category="Sizzling"><img src="assets/sizzling-tokwat-baboy.jpg" alt="Sizzling Tokwa&#x27;t Baboy" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Tokwa&#x27;t Baboy</h3><ul class="prices"><li><span></span><strong>₱200</strong></li></ul></div></article>
 <article class="dish" data-name="sizzling bean sprouts" data-category="Sizzling"><img src="assets/photo-846704403-720.jpg" alt="Sizzling Bean Sprouts" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Bean Sprouts</h3><ul class="prices"><li><span></span><strong>₱190</strong></li></ul></div></article>
 <article class="dish" data-name="sizzling beef cabbage" data-category="Sizzling"><img src="assets/photo-844795370-720.jpg" alt="Sizzling Beef Cabbage" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Beef Cabbage</h3><ul class="prices"><li><span></span><strong>₱180</strong></li></ul></div></article>
 <article class="dish" data-name="sizzling skewers" data-category="Sizzling"><img src="assets/image-30.webp" alt="Sizzling Skewers" width="720" height="540" loading="lazy" decoding="async"><div class="dish-body"><p class="dish-cat">Sizzling</p><h3>Sizzling Skewers</h3><p class="inc">Unlimited Rice &amp; Soup</p><ul class="prices"><li><span></span><strong>₱170</strong></li></ul></div></article>
@@ -350,21 +384,15 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
 <script>
 (function(){
  var d=document.documentElement,$=function(i){return document.getElementById(i)};
- /* intro */
- var intro=$('intro'),skip=$('skip-intro'),done=false,timer,safety;
- function finish(){
-  if(done)return;done=true;clearTimeout(timer);clearTimeout(safety);
-  try{sessionStorage.setItem('tapsi-intro','1')}catch(e){}
-  d.classList.add('intro-done');intro.classList.add('out');
-  setTimeout(function(){d.classList.remove('intro-on')},850);
+ /* Background film respects motion preferences and user playback choice. */
+ var film=$('hero-film'), filmButton=$('film-toggle'), motion=matchMedia('(prefers-reduced-motion: reduce)'), userPaused=false;
+ function syncFilm(){
+  if(motion.matches||userPaused){film.pause();filmButton.textContent='Play background video';filmButton.setAttribute('aria-pressed','false')}
+  else{film.play().then(function(){filmButton.textContent='Pause background video';filmButton.setAttribute('aria-pressed','true')}).catch(function(){filmButton.textContent='Play background video';filmButton.setAttribute('aria-pressed','false')})}
  }
- if(d.classList.contains('intro-on')){
-  skip.focus({preventScroll:true});
-  skip.addEventListener('click',finish);
-  intro.addEventListener('click',finish);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')finish()});
-  timer=setTimeout(finish,4300);safety=setTimeout(finish,8000);
- }else{d.classList.add('intro-done')}
+ filmButton.addEventListener('click',function(){userPaused=!film.paused;if(!userPaused&&motion.matches){film.play().then(function(){filmButton.textContent='Pause background video';filmButton.setAttribute('aria-pressed','true')}).catch(function(){})}else{syncFilm()}});
+ motion.addEventListener('change',syncFilm);syncFilm();
+ document.addEventListener('visibilitychange',function(){if(document.hidden)film.pause();else syncFilm()});
  /* nav */
  var burger=$('burger'),nav=$('nav');
  function closeNav(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open navigation')}
