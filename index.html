@@ -11,39 +11,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;700&display=swap">
 
-<link rel="preload" as="image" href="assets/storefront.jpg" fetchpriority="high">
-<link rel="stylesheet" href="assets/storefront-intro.css">
+<link rel="preload" as="image" href="assets/image-02.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/signature-intro.css">
 <script>
 /* The timeout also releases the page if the intro module never loads. */
 (function () {
   try {
     if (location.hash || matchMedia('(prefers-reduced-motion: reduce)').matches ||
         (performance.getEntriesByType('navigation')[0] || {}).type === 'back_forward') return;
-    document.documentElement.classList.add('storefront-pending');
-    function dismissPendingStorefront() {
-      document.dispatchEvent(new Event('storefront:cancel'));
-      document.documentElement.classList.remove('storefront-pending', 'storefront-active', 'storefront-revealing');
-      document.querySelectorAll('[data-storefront-lock]').forEach(function (element) {
+    document.documentElement.classList.add('signature-pending');
+    function dismissPendingSignature() {
+      document.dispatchEvent(new Event('signature:cancel'));
+      document.documentElement.classList.remove('signature-pending', 'signature-active', 'signature-revealing');
+      document.documentElement.style.removeProperty('--intro-scrollbar');
+      document.querySelectorAll('[data-signature-lock]').forEach(function (element) {
         element.inert = false;
-        element.removeAttribute('data-storefront-lock');
+        element.removeAttribute('data-signature-lock');
       });
-      var intro = document.getElementById('storefront-intro');
+      var intro = document.getElementById('signature-intro');
       if (intro) intro.hidden = true;
     }
-    window.storefrontSafety = setTimeout(dismissPendingStorefront, 8000);
+    window.signatureSafety = setTimeout(dismissPendingSignature, 8000);
     window.addEventListener('error', function (event) {
-      if (event.target && event.target.tagName === 'SCRIPT' && event.target.src.indexOf('storefront-intro.js') !== -1) dismissPendingStorefront();
+      if (event.target && event.target.tagName === 'SCRIPT' && event.target.src.indexOf('signature-intro.js') !== -1) dismissPendingSignature();
     }, true);
     document.addEventListener('click', function (event) {
-      if (!document.documentElement.classList.contains('storefront-active') && event.target.closest('#storefront-skip')) dismissPendingStorefront();
+      if (!document.documentElement.classList.contains('signature-active') && event.target.closest('#signature-skip')) dismissPendingSignature();
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && !document.documentElement.classList.contains('storefront-active')) dismissPendingStorefront();
+      if (event.key === 'Escape' && !document.documentElement.classList.contains('signature-active')) dismissPendingSignature();
     });
   } catch (error) { /* A static, interactive homepage is the fallback. */ }
 }());
 </script>
-<script src="assets/storefront-intro.js" defer></script>
+<script src="assets/signature-intro.js" defer></script>
 <style>
 :root{--bg:#161311;--surface:#1f1b18;--raised:#29241f;--line:#3a332c;--cream:#f4ead7;--mute:#b9ab96;--amber:#d9a44a;--amber-d:#b98530;--red:#c9291d;--head:'Fraunces',Georgia,'Times New Roman',serif;--body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;--bar:64px;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161311}}
@@ -251,13 +252,23 @@ footer a{text-decoration:none}footer a:hover{color:var(--amber)}
 </style>
 </head>
 <body>
-<div class="storefront-intro" id="storefront-intro" role="dialog" aria-modal="true" aria-label="Entering TapSi Pares" hidden>
- <div class="storefront-camera" aria-hidden="true">
-  <div class="storefront-panel storefront-panel--left"><img src="assets/storefront.jpg" alt="" width="440" height="570" fetchpriority="high" decoding="async"></div>
-  <div class="storefront-panel storefront-panel--right"><img src="assets/storefront.jpg" alt="" width="440" height="570" decoding="async"></div>
+<div class="signature-intro" id="signature-intro" role="dialog" aria-modal="true" aria-labelledby="signature-intro-title" hidden>
+ <div class="signature-grain" aria-hidden="true"></div>
+ <div class="signature-top"><img src="assets/image-01.webp" alt="TapSi Pares" width="68" height="58"><span>Angeles, Pampanga <i aria-hidden="true">✦</i> Filipino comfort food</span></div>
+ <div class="signature-composition">
+  <div class="signature-copy">
+   <p class="signature-eyebrow">A little preview. A big craving.</p>
+   <h2 id="signature-intro-title"><span><b>Unang tingin,</b></span><span><b><em>craving agad.</em></b></span></h2>
+   <p class="signature-subline">The upgraded tapsilog &amp; pares.</p>
+   <div class="signature-stroke" aria-hidden="true"></div>
+  </div>
+  <figure class="signature-plate">
+   <div class="signature-dish-ring"><img src="assets/image-02.webp" width="640" height="439" alt="Tapsi Pares Signature with tapa, pares, eggs and rice" fetchpriority="high" decoding="async"></div>
+   <span class="signature-stamp" aria-hidden="true">THE HOUSE<br><em>favorite.</em></span>
+   <figcaption><span>Tapsi Pares Signature<small>Unlimited Rice &amp; Soup</small></span><strong>₱245</strong></figcaption>
+  </figure>
  </div>
- <p class="storefront-caption"><span>Angeles, Pampanga</span>Welcome to TapSi Pares</p>
- <button class="storefront-skip" id="storefront-skip" type="button">Skip intro <span aria-hidden="true">→</span></button>
+ <div class="signature-bottom"><span>Busog. Lusog. Anytime.</span><button class="signature-skip" id="signature-skip" type="button">Tuloy na <span aria-hidden="true">→</span></button></div>
 </div>
 <a class="skip" href="#main">Skip to content</a>
 
