@@ -1,10 +1,12 @@
 # TapSi Pares 24/7 – premium website mockup
 
-Single-page, no-build static site (HTML, CSS, a little JavaScript). Signature-focused landing page, cinematic background video, premium logo-and-curtain intro, menu search, category filters, and the full 32-dish menu. Names and prices remain unchanged.
+Single-page, no-build static site (HTML, CSS, a little JavaScript). Signature-focused landing page, cinematic background video, cinematic storefront split intro, menu search, category filters, and the full 32-dish menu. Names and prices remain unchanged.
 
 The 22-second silent hero loop in `assets/hero-film.mp4` comes from the supplied video. It plays inline with pause/play controls and uses `assets/hero-poster.jpg` as a fallback. Reduced-motion preferences pause and hide the video. The refreshed sizzling tokwa't baboy photo is a still from the same supplied video.
 
-The welcome animation plays once per browser session, reveals the hero after about five seconds, and supports Skip and Escape. It is omitted for reduced-motion preferences.
+The storefront intro plays once per fresh page load (not on menu interactions, direct section links, or browser history restoration). It uses two aligned copies of `assets/storefront.jpg`, an original frame at 33.3 seconds from the supplied restaurant video, cropped to the real facade without phone UI/subtitles or generated architecture. The parked car remains in the original image. Its native crop is 440×570; desktop framing prioritizes the windows and main sign, while portrait framing shows more of the entrance.
+
+`assets/storefront-intro.css` and `assets/storefront-intro.js` contain the isolated, dependency-free component. A 1.8-second approach overlaps a 3.6-second panel opening and hero reveal, finishing at 5.6 seconds. Skip and Escape immediately reveal the homepage. Reduced motion, unavailable images, missing stylesheet/module, unsupported animation APIs and direct section navigation bypass the intro. A separate safety timeout releases the page if initialization fails. The existing hero and menu content are unchanged.
 
 ## Run locally
 Open `index.html`, or run `npx serve .`
@@ -26,3 +28,7 @@ Menu cards live in `index.html` (`<article class="dish">`). Keep `data-name` and
 
 ## Not included
 Checkout, online ordering, payments, reservations, delivery. The reusable multi-brand (Next.js) version is a separate later step.
+
+## Storefront intro validation
+
+Browser checks exercised the complete sequence at 1440×1000, 1366×768, 768×1024 and 390×844, including shared image coordinates, automatic cleanup, all seven menu filters, search/reset, signature links and mobile navigation. Skip/Escape, reload replay, direct section links, JavaScript disabled, reduced motion, unavailable animation APIs, failed image/CSS/module and delayed-image dismissal were also checked. The existing main-page markup was compared byte-for-byte before and after the intro replacement. Desktop imagery is limited by the original video frame resolution; no architectural detail was generated to increase it.
