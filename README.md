@@ -1,43 +1,24 @@
-# TapSi Pares 24/7
+# TapSi Pares 24/7 – premium website mockup
 
-A static digital-menu and business-information website, improved from the supplied HTML. No backend, database, checkout, payments, ordering, analytics or credentials are required.
+Single-page, no-build static site (HTML, CSS, a little JavaScript). Menu search, category filters, skippable intro (plays once per session, off for reduced-motion), and the full 32-dish menu.
 
-## Preview locally
+## Run locally
+Open `index.html`, or run `npx serve .`
 
-Open `index.html` directly in a browser, or run a static HTTP server from this folder:
+## Deploy (Vercel)
+Import this repo as **Other** (no framework, no build command, no env vars). `vercel.json` only sets basic headers.
 
-```sh
-npx --yes serve .
-```
+## Content that needs owner confirmation
+- All 32 prices and inclusions; which menu board is current.
+- Hours (listed as open 24 hours on Google Maps), address, phone, email, Facebook page.
+- Permission to use the logo and every photo. Storefront photo `assets/photo-545584246-1500.jpg` carries an "EXPLORING PAMPANGA" watermark: get the original or the creator's permission.
+- Spellings: Tocilong, Bistig, German, Samgy Silog.
 
-No compilation or dependency installation is required. The complete menu is HTML and remains readable without JavaScript. JavaScript adds category filtering, search, empty-state recovery and mobile navigation.
+## Photos
+11 dishes use photos from the TapSi Pares Facebook page, matched by eye (not yet confirmed by the owner): Kare-kare, Sausage, Upgraded Bulalo, Braised Beef Silog, Beef Cabbage, Bean Sprouts, Sizzling Liempo, Bulgogi, Katsu, Roast Beef, Pares Silog. Other dishes keep the original menu-board images, some with a price badge baked in.
 
-## Files
+## Editing the menu
+Menu cards live in `index.html` (`<article class="dish">`). Keep `data-name` and `data-category` in sync with the visible name and category.
 
-- `index.html`: page content, menu, business details and exact supplied contact URLs.
-- `styles.css`: responsive layout and brand styling.
-- `app.js`: filters, search and mobile navigation.
-- `menu-data.json`: editable reference copy of all 32 original menu entries. The page is static: editing this JSON alone does **not** update the HTML. Update the matching HTML card and this reference copy together.
-- `assets/`: 33 original embedded WebP images extracted byte-for-byte, plus self-hosted Anton and Inter fonts and their licenses.
-- `MENU_VERIFICATION.md`: all supplied prices and details still awaiting restaurant confirmation.
-- `DESIGN_NOTES.md`: design references and implementation decisions.
-- `TEST_REPORT.md`: checks actually performed and limitations.
-- `vercel.json`: static hosting and basic response headers.
-
-## Content updates
-
-Each menu `<article>` carries `data-name` and `data-category`. Keep these in sync with the displayed name and category. Add a filter button if a new category is introduced. Update the initial dish count in the HTML for the no-JavaScript fallback; JavaScript recalculates the count on load.
-
-The address, hours caveat, phone, email, Maps URL and Facebook URL are in `index.html`. Preserve the exact verified destinations. Keep `.env` files and `.vercel` metadata out of Git.
-
-## Deploy
-
-Import this repository into Vercel as **Other** (static website). Root directory: repository root. No build command or install step is necessary; no environment variables are required. The project has no framework migration or build dependencies.
-
-This is a proposed restaurant website/demo. Confirm menu prices, inclusions, current hours, business details and photo usage with the restaurant before representing it as the official restaurant website. The supplied logo itself contains an “Open 24 hours” badge; the website explicitly asks visitors to confirm hours.
-
-NFC integration is simply encoding the final website URL onto an NFC product separately. The website works by normal URL and does not detect NFC taps.
-
-## Source preservation
-
-The supplied source file was not modified. Its 32 dishes, 6 categories, prices, variants, inclusions, exact contact destinations and images are retained. Original image resolution varies, and some photos contain text from the supplied menu-board crops. Higher-resolution original food photos would improve large-screen presentation; no synthetic food photos were created.
+## Not included
+Checkout, online ordering, payments, reservations, delivery. The reusable multi-brand (Next.js) version is a separate later step.
