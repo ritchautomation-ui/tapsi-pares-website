@@ -58,7 +58,7 @@
       getComputedStyle(overlay).position !== 'fixed') { complete(); return; }
 
   // A failed, delayed or missing image must never hold the homepage hostage.
-  later(() => complete(true), 1500);
+  later(() => complete(true), 4000);
   Promise.all(images.map(image => image.decode())).then(() => {
     if (finished || !root.classList.contains('signature-pending') || images.some(image => !image.naturalWidth) || motion.matches || document.hidden) {
       complete(); return;

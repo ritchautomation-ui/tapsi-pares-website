@@ -6,7 +6,7 @@ The 22-second silent hero loop in `assets/hero-loop-v2.mp4` comes from the suppl
 
 The opening is a three-second food editorial: burgundy and gold, animated “Unang tingin, craving agad.” typography, the existing signature plate photograph, and a soft dissolve into the hero video. There is no storefront or architectural animation.
 
-`assets/signature-intro.css` and `assets/signature-intro.js` contain the dependency-free component. It plays once per fresh page load; section links and browser-history restoration bypass it. “Tuloy na” and Escape immediately reveal the page. Reduced motion, failed images, and unavailable CSS/JavaScript fall back to the homepage. A separate safety timeout releases the page if initialization fails. The hero has no floating food card. All 32 menu names and prices remain unchanged. Facebook, phone and email links use labeled, keyboard-accessible inline SVG icons.
+`assets/signature-intro.css` and `assets/signature-intro.js` contain the dependency-free component. It plays once per fresh page load; direct menu/story/visit links and browser-history restoration bypass it; the root page, `#home` and `#main` play the intro. A slow image connection gets up to four seconds to become ready before falling back. “Tuloy na” and Escape immediately reveal the page. Reduced motion, failed images, and unavailable CSS/JavaScript fall back to the homepage. A separate safety timeout releases the page if initialization fails. The hero has no floating food card. All 32 menu names and prices remain unchanged. Facebook, phone and email links use labeled, keyboard-accessible inline SVG icons.
 
 ## Run locally
 From the repository root, run `python3 -m http.server 3000`. No dependency installation or build step is needed.
