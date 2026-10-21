@@ -2,17 +2,17 @@
 
 Single-page, no-build static site (HTML, CSS, a little JavaScript). Signature-focused landing page, cinematic background video, short food-focused intro, menu search, category filters, and the full 32-dish menu. Names and prices remain unchanged.
 
-The 22-second silent hero loop in `assets/hero-film.mp4` comes from the supplied video. It plays inline with pause/play controls and uses `assets/hero-poster.jpg` as a fallback. Reduced-motion preferences pause and hide the video. The refreshed sizzling tokwa't baboy photo is a still from the same supplied video.
+The 22-second silent hero loop in `assets/hero-loop-v2.mp4` comes from the supplied video. It is 30.8% smaller than the previous encode (3,568,368 → 2,467,746 bytes), retaining the same 22-second content and 576×1024 resolution. It loads after the intro only when the hero is visible, pauses offscreen, and preserves manual pause. It uses `assets/hero-poster.jpg` as a fallback. Reduced-motion and data-saver preferences default to the poster; explicit playback opts into a visible video. The refreshed sizzling tokwa't baboy photo is a still from the same supplied video.
 
 The opening is a three-second food editorial: burgundy and gold, animated “Unang tingin, craving agad.” typography, the existing signature plate photograph, and a soft dissolve into the hero video. There is no storefront or architectural animation.
 
-`assets/signature-intro.css` and `assets/signature-intro.js` contain the dependency-free component. It plays once per fresh page load; section links and browser-history restoration bypass it. “Tuloy na” and Escape immediately reveal the page. Reduced motion, failed images, and unavailable CSS/JavaScript fall back to the homepage. A separate safety timeout releases the page if initialization fails. All existing homepage content, menu names and prices remain unchanged.
+`assets/signature-intro.css` and `assets/signature-intro.js` contain the dependency-free component. It plays once per fresh page load; section links and browser-history restoration bypass it. “Tuloy na” and Escape immediately reveal the page. Reduced motion, failed images, and unavailable CSS/JavaScript fall back to the homepage. A separate safety timeout releases the page if initialization fails. The hero has no floating food card. All 32 menu names and prices remain unchanged. Facebook, phone and email links use labeled, keyboard-accessible inline SVG icons.
 
 ## Run locally
-Open `index.html`, or run `npx serve .`
+From the repository root, run `python3 -m http.server 3000`. No dependency installation or build step is needed.
 
 ## Deploy (Vercel)
-Import this repo as **Other** (no framework, no build command, no env vars). `vercel.json` only sets basic headers.
+Import this repo as **Other** (no framework, no build command, no env vars). `vercel.json` sets response and cache headers. Mutable CSS/JavaScript/images revalidate; the explicitly versioned video and fonts can be cached long-term. Give replacement video/font assets a new versioned filename rather than overwriting an immutable URL.
 
 ## Content that needs owner confirmation
 - All 32 prices and inclusions; which menu board is current.
@@ -29,6 +29,10 @@ Menu cards live in `index.html` (`<article class="dish">`). Keep `data-name` and
 ## Not included
 Checkout, online ordering, payments, reservations, delivery. The reusable multi-brand (Next.js) version is a separate later step.
 
-## Intro validation
+## Frontend assets
 
-Browser checks cover the full animation at desktop, portrait mobile, small-phone and landscape sizes, plus all seven category filters, search/reset and intro cleanup. Independent checks cover Skip/Escape, reduced motion at load and mid-sequence, and blocked CSS/JavaScript/photo fallbacks. The existing main-page markup was compared byte-for-byte before and after the intro replacement.
+`assets/site.css` and `assets/site.js` hold the main styles and interactions; the signature intro stays in its own two files. All font files are local WOFF2 subsets from Fontsource Variable 5.3.0 (Fraunces optical-size normal/italic and Hanken Grotesk normal). The npm package tarballs were verified against their published SHA-512 integrity values; font licenses are in `assets/fonts/`. There are no external font or icon requests. Photos keep their original files, accurate intrinsic dimensions, async decoding and lazy loading below the fold; CSS fixes the menu image ratio at 5:4.
+
+## Validation
+
+Browser checks passed at 320×720, 390×844, 568×320, 768×1024, 1024×768 and 1440×1000: no horizontal overflow, all seven category filters, search/reset, signature CTA, correctly proportioned menu photos, labeled contact icons, mobile navigation and no JavaScript errors. The 32 names and prices were compared to the previous version. Video checks cover deferred loading after intro, offscreen pause, manual pause preservation, direct section visits without video download, reduced-motion/data-saver opt-in and no-JavaScript fallback. All 49 referenced local resources and icon/navigation fragments resolve. Intro failure fallbacks and the locally hosted fonts were checked independently.

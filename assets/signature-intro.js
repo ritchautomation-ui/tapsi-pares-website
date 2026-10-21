@@ -12,6 +12,7 @@
   const previousFocus = document.activeElement;
   let finished = false;
   let started = false;
+  let keyboardUsed = false;
   const later = (callback, delay) => {
     const id = setTimeout(() => { timers.delete(id); callback(); }, delay);
     timers.add(id);
@@ -33,6 +34,7 @@
       }
     });
     if (overlay) overlay.hidden = true;
+    document.dispatchEvent(new Event('signature:complete'));
     document.removeEventListener('keydown', onKey);
     motion.removeEventListener('change', onMotion);
     document.removeEventListener('signature:cancel', onCancel);
@@ -43,6 +45,7 @@
     }
   }
   function onKey(event) {
+    keyboardUsed = true;
     if (event.key === 'Escape') { event.preventDefault(); complete(true); }
     // Skip is the only interactive element in the short modal sequence.
     if (event.key === 'Tab') { event.preventDefault(); skip.focus({ preventScroll: true }); }
@@ -77,7 +80,7 @@
     // The plate and typography arrive together, then dissolve into the hero.
     later(() => root.classList.add('signature-revealing'), 2050);
     later(() => overlay.classList.add('is-leaving'), 2350);
-    later(() => complete(true), 3100);
-    later(() => complete(true), 4500);
+    later(() => complete(keyboardUsed), 3100);
+    later(() => complete(keyboardUsed), 4500);
   }).catch(() => complete(true));
 })();
