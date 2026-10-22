@@ -8,6 +8,31 @@ The opening is a three-second food editorial: burgundy and gold, animated “Una
 
 `assets/signature-intro.css` and `assets/signature-intro.js` contain the dependency-free component. It plays once per fresh page load; direct menu/story/visit links and browser-history restoration bypass it; the root page, `#home` and `#main` play the intro. A slow image connection gets up to four seconds to become ready before falling back. “Tuloy na” and Escape immediately reveal the page. Reduced motion, failed images, and unavailable CSS/JavaScript fall back to the homepage. A separate safety timeout releases the page if initialization fails. The hero has no floating food card. All 32 menu names and prices remain unchanged. Facebook, phone and email links use labeled, keyboard-accessible inline SVG icons.
 
+## Creator features ("Natikman nila. Ikaw naman.")
+Section `#features` sits between the signature dishes and the menu. Entries live in one JSON block in `index.html` (`<script type="application/json" id="creator-features">`) with `id`, `creatorName`, `title`, `platform`, `localVideoSrc`, `posterSrc`, `originalPostUrl` and `duration`. `assets/site.js` renders the cards and drives one native `<dialog>` player (Escape/close button/backdrop close, focus contained and returned to the card, source released on close, retry/close error state). The hero background pauses while the player is open and is re-evaluated on close, so manual pause, offscreen, hidden-tab, reduced-motion and data-saver rules still apply.
+
+| Card | File | Source | Poster frame |
+| --- | --- | --- | --- |
+| FoodTrip sa Norte | `assets/features/foodtrip-sa-norte-v1.mp4` | 137.28 s, 576×1024, H.264 High 30 fps, HE-AAC stereo | 0:13 |
+| Cabalen Foodie | `assets/features/cabalen-foodie-v1.mp4` | 121.09 s, 720×1280, H.264 High 30 fps, HE-AAC stereo | 0:04 |
+| Kabulakboy | `assets/features/kabulakboy-v1.mp4` | 358.61 s, 720×1280, H.264 High 28 fps, HE-AAC stereo | 2:46 |
+
+The MP4s are byte-identical copies of the supplied files (already faststart). Test re-encodes at CRF 21/23 came out larger than the source with lower SSIM, so the originals are kept; they remain in the owner's supplied media folder. No video is requested until a card is chosen; posters are lazy WebP stills from each card's own video.
+
+Before publishing:
+- `originalPostUrl` is `null` for all three, so no "Watch on Facebook" link shows. Add each creator's direct post URL when supplied.
+- Confirm each creator's permission to host their video and the two gallery stills taken from FoodTrip sa Norte and Kabulakboy. Creator names are display labels only; no handles, endorsements or sponsorship are claimed.
+- `kabulakboy-v1.mp4` is 99.1 MB (94.5 MiB): under GitHub's 100 MiB hard limit but over its 50 MiB warning size. Confirm the Vercel plan accepts it, or move the three videos to external storage (e.g. Vercel Blob) and update `localVideoSrc`.
+
+## Typography
+Barlow Condensed 700/800 for major headings (uppercase h1/h2, sentence-case card titles) and Hanken Grotesk for body, navigation, buttons, captions and prices (tabular numerals). Tokens live at the top of `assets/site.css` (`--font-display`, `--font-body`, `--fs-*`) and the intro uses the same variables. Fonts are self-hosted Fontsource 5.3.0 WOFF2 subsets (`@fontsource/barlow-condensed`, `@fontsource-variable/hanken-grotesk`) whose npm tarballs matched their published SHA-512 integrity. The latin-ext subsets load only for characters such as ₱. Fraunces was removed.
+
+## Gallery
+"Up close. Full of flavor." shows six food-only square frames (3/2/1 columns): four TapSi Pares Facebook photos and two credited video stills. The storefront photo is no longer used on the page; its file is kept.
+
+## Google review
+"Leave us a Google review" (Visit section) and "Write a review" (footer) open the Google write-review link for the listing.
+
 ## Run locally
 From the repository root, run `python3 -m http.server 3000`. No dependency installation or build step is needed.
 
@@ -31,7 +56,7 @@ Checkout, online ordering, payments, reservations, delivery. The reusable multi-
 
 ## Frontend assets
 
-`assets/site.css` and `assets/site.js` hold the main styles and interactions; the signature intro stays in its own two files. All font files are local WOFF2 subsets from Fontsource Variable 5.3.0 (Fraunces optical-size normal/italic and Hanken Grotesk normal). The npm package tarballs were verified against their published SHA-512 integrity values; font licenses are in `assets/fonts/`. There are no external font or icon requests. Photos keep their original files, accurate intrinsic dimensions, async decoding and lazy loading below the fold; CSS fixes the menu image ratio at 5:4.
+`assets/site.css` and `assets/site.js` hold the main styles and interactions; the signature intro stays in its own two files. CSS/JS URLs carry a `?v=` query and revalidate; versioned fonts and everything in `assets/features/` are cached as immutable. Font licenses are in `assets/fonts/`. There are no external font or icon requests. Photos keep their original files, accurate intrinsic dimensions, async decoding and lazy loading below the fold; CSS fixes the menu image ratio at 5:4.
 
 ## Validation
 
